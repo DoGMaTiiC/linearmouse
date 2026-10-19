@@ -24,6 +24,8 @@ extension Scheme {
 
         @ImplicitOptional var autoScroll: AutoScroll
 
+        @ImplicitOptional var continuousGesture: ContinuousGesture
+
         /// Deprecated legacy configuration, retained for startup migration and fallback decoding.
         @available(*, deprecated, message: "Use mappings with swipe outcomes instead.")
         @ImplicitOptional var gesture: Gesture
@@ -56,6 +58,10 @@ extension Scheme.Buttons {
             autoScroll.merge(into: &buttons.$autoScroll)
         }
 
+        if let continuousGesture = $continuousGesture {
+            continuousGesture.merge(into: &buttons.$continuousGesture)
+        }
+
         if let gesture = $gesture {
             buttons.$gesture = gesture
         }
@@ -78,6 +84,7 @@ extension Scheme.Buttons {
         case switchPrimaryButtonAndSecondaryButtons
         case clickDebouncing
         case autoScroll
+        case continuousGesture
         case gesture
     }
 
@@ -102,6 +109,7 @@ extension Scheme.Buttons {
             forKey: .clickDebouncing
         )
         _autoScroll = try container.decode(ImplicitOptional<AutoScroll>.self, forKey: .autoScroll)
+        _continuousGesture = try container.decode(ImplicitOptional<ContinuousGesture>.self, forKey: .continuousGesture)
         _gesture = try container.decode(ImplicitOptional<Gesture>.self, forKey: .gesture)
     }
 
@@ -121,6 +129,7 @@ extension Scheme.Buttons {
         )
         try container.encode(_clickDebouncing, forKey: .clickDebouncing)
         try container.encode(_autoScroll, forKey: .autoScroll)
+        try container.encode(_continuousGesture, forKey: .continuousGesture)
         try container.encode(_gesture, forKey: .gesture)
     }
 }

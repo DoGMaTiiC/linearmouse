@@ -128,6 +128,11 @@
           "description": "Ignore rapid clicks with a certain time period.",
           "title": "Debounce button clicks"
         },
+        "continuousGesture": {
+          "$ref": "#/definitions/Scheme.Buttons.ContinuousGesture",
+          "description": "While the configured trigger button is held, convert pointer movement into a continuous scroll gesture series.",
+          "title": "Continuous gesture"
+        },
         "gesture": {
           "$ref": "#/definitions/Scheme.Buttons.Gesture",
           "deprecated": true,
@@ -309,6 +314,22 @@
           "$ref": "#/definitions/Scheme.Buttons.ClickDebouncing.Libinput"
         }
       ]
+    },
+    "Scheme.Buttons.ContinuousGesture": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "default": false,
+          "description": "Indicates if continuous gesture is enabled.",
+          "type": "boolean"
+        },
+        "trigger": {
+          "$ref": "#/definitions/Scheme.Pointer.RedirectsToScrollTrigger",
+          "description": "Choose the mouse button and modifier keys used to activate the continuous gesture.",
+          "title": "Trigger"
+        }
+      },
+      "type": "object"
     },
     "Scheme.Buttons.Gesture": {
       "additionalProperties": false,
