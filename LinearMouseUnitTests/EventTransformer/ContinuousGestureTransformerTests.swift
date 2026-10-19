@@ -2,6 +2,7 @@
 // Copyright (c) 2021-2026 LinearMouse
 
 import CoreGraphics
+import GestureKit
 @testable import LinearMouse
 import XCTest
 
