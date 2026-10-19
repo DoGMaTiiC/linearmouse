@@ -57,5 +57,4 @@ public struct GestureSeries {
         isOpen = false
         return Step(phase: .cancelled, deltaX: 0, deltaY: 0)
     }
-
 }
