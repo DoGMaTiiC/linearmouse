@@ -526,6 +526,12 @@ declare namespace Scheme {
      * @description Click or hold a mouse button, then move the pointer to continuously scroll like the Windows middle-button autoscroll behavior.
      */
     autoScroll?: Buttons.AutoScroll;
+
+    /**
+     * @title Continuous gesture
+     * @description While the configured trigger button is held, convert pointer movement into a continuous scroll gesture series.
+     */
+    continuousGesture?: Buttons.ContinuousGesture;
   };
 
   namespace Buttons {
@@ -632,7 +638,22 @@ declare namespace Scheme {
          */
         control?: boolean;
       };
+
     }
+
+    type ContinuousGesture = {
+      /**
+       * @description Indicates if continuous gesture is enabled.
+       * @default false
+       */
+      enabled?: boolean;
+
+      /**
+       * @title Trigger
+       * @description Choose the mouse button and modifier keys used to activate the continuous gesture.
+       */
+      trigger?: Pointer.RedirectsToScrollTrigger;
+    };
 
     /**
      * @description Legacy flat mappings are accepted and migrated to the structured format when the configuration is loaded.

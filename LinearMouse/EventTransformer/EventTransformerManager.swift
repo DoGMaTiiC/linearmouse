@@ -902,6 +902,20 @@ class EventTransformerManager {
             eventTransformer.append(transformer)
         }
 
+        // An opt-in held trigger converts pointer movement into a continuous
+        // scroll gesture series. It is consumed before button mappings so the
+        // same button does not also click or run a mapping.
+        if let continuousGesture = scheme.buttons.$continuousGesture,
+           continuousGesture.enabled == true,
+           let trigger = continuousGesture.trigger,
+           let transformer = ContinuousGestureTransformer(
+               trigger: trigger,
+               warpPointer: warpPointer,
+               eventSink: { [postEvent] in postEvent($0, .cgSessionEventTap) }
+           ) {
+            eventTransformer.append(transformer)
+        }
+
         // Action mapping reads physical movement before page-scroll normalization.
         // Otherwise smoothing/distance settings change shortcut trigger frequency.
         if !buttonMappings.isEmpty {

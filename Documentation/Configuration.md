@@ -1063,6 +1063,27 @@ To convert movement only while a button is held, add `redirectsToScrollTrigger`.
 }
 ```
 
+### Continuous gesture (opt-in)
+
+`buttons.continuousGesture` converts pointer movement into a continuous scroll gesture series while a configured trigger button is held. It is disabled by default.
+
+```json
+{
+  "schemes": [
+    {
+      "buttons": {
+        "continuousGesture": {
+          "enabled": true,
+          "trigger": {
+            "input": { "button": 3 }
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
 ### Deprecated gesture button configuration and migration
 
 `buttons.gesture` and all of its fields are **deprecated**. Use
