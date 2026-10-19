@@ -1,8 +1,6 @@
 // MIT License
 // Copyright (c) 2021-2026 LinearMouse
 
-import Foundation
-
 public struct GestureSeries {
     public enum Phase: Equatable, Sendable {
         case began
@@ -23,7 +21,7 @@ public struct GestureSeries {
         }
     }
 
-    private var isOpen: Bool = false
+    private var isOpen = false
 
     public init() {}
 
